@@ -6,5 +6,8 @@ Created on Thu Sep 24 23:38:01 2015
 """
 
 #Git
-a = raw_input()
+a = raw_input(" First number")
 print a
+b = raw_input("Second Number")
+c = a + b
+print c
