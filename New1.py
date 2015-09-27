@@ -45,15 +45,14 @@ def butter_bandpass_filter(data, lowcut, highcut, fs, order=5):
 
  # Sample rate and desired cutoff frequencies (in Hz).
 fs = 200
-lowcut = 2 
-highcut = 30
+lowcut = 2
+highcut = 6
 
 
 # Filter the noisy signal.
 y = butter_bandpass_filter(u, lowcut, highcut, fs, order=5)
 
 plt.figure(2)
-plt.subplot(2, 1, 2)
 plt.plot(t, u, color ='crimson', label='data')
 plt.plot(t, y, 'g-', linewidth=2, label='filtered data')
 plt.xlabel('Time [sec]')
@@ -94,7 +93,7 @@ plt.subplot(2,1,2)
 plt.plot(freqs2,f2,color='turquoise')
 plt.xlim((0,10))
 plt.ylim((0,y1+20))
-plt.text(x1,y1,'Peak corresponding to Maximum PSD')
+plt.text(x1,y1,'*Peak corresponding to Maximum PSD')
 plt.xlabel('Frequency(Hz)')
 plt.ylabel('PSD')
 plt.grid()
@@ -131,7 +130,6 @@ cutoff3 = 0.3  # desired cutoff frequency of the filter, Hz
 # Filter the data, and plot both the original and filtered signals.
 rr = butter_lowpass_filter(u, cutoff3, fs3, order3)
 plt.figure(4)
-plt.subplot(2, 1, 2)
 plt.plot(t, u, color ='crimson', label='data')
 plt.plot(t, rr, 'g-', linewidth=2, label='filtered data')
 plt.xlabel('Time [sec]')
@@ -175,7 +173,7 @@ plt.subplot(2,1,2)
 plt.plot(freqs3, f3,linewidth = 2.5,color='darkolivegreen')
 plt.xlim((0,2))
 plt.ylim((0,y2+20))
-plt.text(x2,y2,'Peak correspondig to Best Frequency')
+plt.text(x2,y2,'*Peak correspondig to Best Frequency')
 plt.grid()
 plt.show()
 
