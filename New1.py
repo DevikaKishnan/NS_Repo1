@@ -109,32 +109,20 @@ print "Heart Rate  =", HeartRate, "Beats per minute"
 
 ##RESPIRATION RATE
 
-#Use  low-pass filter to get low DC signal
-def butter_lowpass(cutoff3, fs3, order3=5):
-    nyq = 0.5 * fs3
-    normal_cutoff = cutoff3 / nyq
-    b3, a3 = butter(order3, normal_cutoff, btype='low', analog=False)
-    return b3, a3
-
-def butter_lowpass_filter(data, cutoff3, fs3, order3=5):
-    b3, a3 = butter_lowpass(cutoff3, fs3, order3=order3)
-    y = lfilter(b3, a3, data)
-    return y
-
-
 # Filter requirements.
-order3 = 4
-fs3 = 200      # sample rate, Hz
-cutoff3 = 0.3  # desired cutoff frequency of the filter, Hz
+lowcut1 = 0.3
+highcut1 =0.5
+fs3= 200
+order3 = 3
 
 # Filter the data, and plot both the original and filtered signals.
-rr = butter_lowpass_filter(u, cutoff3, fs3, order3)
+rr =butter_bandpass_filter(u, lowcut1, highcut1, fs, order3)
 plt.figure(4)
 plt.plot(t, u, color ='crimson', label='data')
 plt.plot(t, rr, 'g-', linewidth=2, label='filtered data')
 plt.xlabel('Time [sec]')
 plt.ylabel('PPG data')
-plt.title('Lowpass Filtered Data for Respiration rate detection')
+plt.title('Bandpass Filtered Data for Respiration rate detection')
 plt.grid()
 plt.legend()
 
