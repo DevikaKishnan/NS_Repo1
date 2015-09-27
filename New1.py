@@ -110,8 +110,8 @@ print "Heart Rate  =", HeartRate, "Beats per minute"
 ##RESPIRATION RATE
 
 # Filter requirements.
-lowcut1 = 0.3
-highcut1 =0.5
+lowcut1 = 0.4
+highcut1 = 0.7
 fs3= 200
 order3 = 3
 
@@ -144,8 +144,8 @@ freqs3 = freqs3[range(N/2)]   #remove mirrored part of FFT
 ## Find best frequency
 new = np.array(f3).tolist()
 new.remove(max(new))
-m3 = max(new)
-d3 =[i for i, j in enumerate(new) if j == m3] ## the sample number associated to maximum PSD
+m3 = max(f3)
+d3 =[i for i, j in enumerate(f3) if j == m3] ## the sample number associated to maximum PSD
 
 
 ##Plotting Periodogram 2
@@ -161,7 +161,7 @@ plt.subplot(2,1,2)
 plt.plot(freqs3, f3,linewidth = 2.5,color='darkolivegreen')
 plt.xlim((0,2))
 plt.ylim((0,y2+20))
-plt.text(x2,y2,'*Peak correspondig to Best Frequency')
+plt.text(x2,y2,'*Peak corresponding to Best Frequency')
 plt.grid()
 plt.show()
 
